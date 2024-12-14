@@ -1,0 +1,205 @@
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Keeng's Moto
+    link(rel="stylesheet", href="/static/home.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
+  body
+    // Header
+    header
+      .header-center
+        nav.header-nav
+          .header-left
+            a(href="index.html")
+              img(src="/static/images/logokeng.png", alt="logo")
+          // Menu
+          ul.main-menu
+            li: a(href="/") Trang chủ
+            li: a(href="/automaker") Hãng xe
+            li: a(href="product") Sản phẩm
+            li: a(href="/contact") Liên hệ
+            li: a(href="news") Tin tức
+            li: a(href="/login") Login / Register         
+          .contact
+            a(href="tel:0398602700") ✆-0398.602.700
+          li.cart
+            a(href="/mylibrary")
+              i.fas.fa-shopping-cart
+              span.cart-count 0
+          .dropdown
+            button.dropdown-btn(aria-label="Mở menu người dùng") ☰
+            .dropdown-content
+              a(href="/account") Tài khoản
+              a(href="/support") Hỗ trợ
+              a(href="/logout") Đăng xuất
+    //- Banner Section
+    section.banner
+      .banner-slides
+        .banner-slide
+          a(href="details.html")
+            img(src="/static/images/banner.jpg" alt="Banner 1")
+        .banner-slide
+          a(href="details.html")
+            img(src="/static/images/Bannergp.jpg" alt="Banner 2")
+        .banner-slide
+          a(href="details.html")
+            img(src="/static/images/21ZR1000K_40RGN1ATAA2CG_A.png" alt="Banner 3")
+        .banner-slide
+          a(href="details.html")
+            .banner-indicators
+              span.indicator(active)
+              span.indicator
+              span.indicator
+      button.banner-button Tìm hiểu thêm
+    section.new-products
+        if motos && motos.length > 0
+          ul.moto-list
+            each moto in motos
+              li.moto-item
+                .sale-badge
+                  .sale-percentage 24.6%
+                  .sale-text SALE
+                img(src=moto.AnhXe || '/path/to/default-image.jpg', alt=moto.TenXe)
+                h5 #{moto.DongXe} 
+                h4 Price: #{moto.GiaBan} VND
+                p= moto.TenXe
+                if moto.SaleTag
+                  .sale-tag #{moto.SaleTag}
+                form(action=`/mylibrary/add/${moto._id}`, method="POST")
+                  button(type="submit") Lưu sản phẩm
+        else
+          p Không có sản phẩm mới nào.
+
+        // Phân trang
+        .pagination
+          if currentPage > 1
+            a(href=`/?page=${currentPage - 1}&limit=3`) ← Back
+          | Page #{currentPage} of #{totalPages}
+          if currentPage < totalPages
+            a(href=`/?page=${currentPage + 1}&limit=3`) Next →
+
+    // News Section
+    section.news
+      h2 TIN TỨC
+      .news-items
+        article
+          img(src="/static/images/1.jpg", alt="News Image 1")
+          h3 KAWASAKI RA MẮT MẪU XE MỚI: VERSYS 1100-2025
+          p Mẫu mô tô phiêu lưu Kawasaki Versys 650 2022 chính thức được giới thiệu tại triển lãm EICMA 2021 ở Italy, với thiết kế mới sắc nét hơn. Kawasaki Versys 650 2022 trang bị cụm đèn pha lấy cảm hứng từ mẫu mô tô thể thao Ninja 650, nối với thân xe....
+          a(href="/htmllll") TIN TỨC
+        article
+          img(src="/static/images/2.jpg", alt="News Image 2")
+          h3 Z900 AB 2025 CHÍNH THỨC LỘ DIỆN VỚI NHIỀU NÂNG CẤP ĐỘT PHÁ MỚI
+          p Kawasaki vừa công bố mẫu Z900 với một số cập nhật cho năm 2025. Mẫu Z900 2025 sẽ giới thiệu hệ thống điện tử mới và kiểu dáng được cập nhật, nhưng vẫn giữ nguyên dung tích 948cc hiện tại. Vẫn giữ nguyên ngôn ngữ thiết kế Sugomi đặc trưng của Kawasaki.
+          a(href="/path-to-article-2.html") TIN TỨC
+
+    // Featured Products
+    section.featured-products
+      h2 SẢN PHẨM TIÊU BIỂU
+      span.brand-name KAWASAKI
+      .products
+        .product
+          a(href="product-details.html")
+            img(src="/static/images/23KLE650H.jpg", alt="Eliminator 500")
+          p.price 182.800.000 đ
+          p.name ELIMINATOR 500
+        .product
+          a(href="product-details.html")
+            img(src="/static/images/19ZX1002J.jpg", alt="Kawasaki Z650RS")
+          p.price 195.000.000 đ
+          p.name KAWASAKI Z650RS
+        .product
+          a(href="product-details.html")
+            img(src="/static/images/23KLX230L.jpg", alt="Kawasaki Ninja 650")
+          p.price 175.000.000 đ
+          p.name KAWASAKI NINJA 650
+        .product
+          a(href="product-details.html")
+            img(src="/static/images/23KLX230R.jpg", alt="Kawasaki W800")
+          p.price 338.000.000 đ
+          p.name KAWASAKI W800
+
+    // Footer
+    footer
+      .footer-container
+        .contact-info
+          h3 CONTACT
+          .contact-details
+            address
+              <br>
+              p Lào Cai
+              p Hotline: 0843 249 999
+              <br>
+              p
+                | Email: 
+                a(href="mailto:lthieu244@gmail.com") lthieu244@gmail.com
+            address
+              p Gia Lâm - Hà Nội
+              p Hotline: 0944 686 666
+        .socials
+          h3 Follow Us
+          .social-icons
+            a(href="https://facebook.com" target="_blank")
+              i.fa.fa-facebook-square
+            a(href="https://instagram.com" target="_blank")
+              i.fa.fa-instagram
+            a(href="https://linkedin.com" target="_blank")
+              i.fa.fa-linkedin
+        .footer-logo
+          img(src="/static/images/logokeng.png", alt="Company Logo")
+
+
+
+script.
+  document.addEventListener("DOMContentLoaded", function() {
+    const cartCountElement = document.querySelector(".cart-count");
+
+    // Kiểm tra nếu phần tử .cart-count tồn tại
+    if (!cartCountElement) {
+      console.error("Không tìm thấy phần tử .cart-count");
+      return;
+    }
+
+    // Lấy giỏ hàng từ localStorage, nếu có
+    let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Cập nhật số lượng sản phẩm trong giỏ hàng
+    cartCountElement.textContent = cartItems.length;
+
+    // Nếu giỏ hàng trống, bạn có thể hiển thị "Giỏ hàng trống"
+    if (cartItems.length === 0) {
+      cartCountElement.textContent = "Giỏ hàng trống";
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    var currentSlide = 0;
+    var slides = document.querySelectorAll('.banner-slide');
+    var indicators = document.querySelectorAll('.indicator');
+    
+    // Số lượng slide giới hạn là 3
+    var maxSlides = 3; 
+
+    // Cập nhật chỉ báo hiện tại
+    function updateIndicators() {
+      indicators.forEach(function(indicator, index) {
+        if (index === currentSlide) {
+          indicator.classList.add('active');
+        } else {
+          indicator.classList.remove('active');
+        }
+      });
+    }
+
+    // Tự động chuyển slide mỗi 2,5 giây
+    setInterval(function() {
+      currentSlide = (currentSlide + 1) % maxSlides; // Giới hạn tối đa 3 slide
+      document.querySelector('.banner-slides').style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+      updateIndicators();
+    }, 3500);
+
+    // Khởi tạo slide đầu tiên
+    updateIndicators();
+  });
+

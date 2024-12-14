@@ -1,0 +1,120 @@
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Keeng's Moto
+    link(rel="stylesheet", href="/static/contact.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
+  body
+    // Header
+    header.header
+      .header-overlay
+        .header-center
+          nav.header-nav
+            .header-left
+              a(href="index.html")
+                img(src="/static/images/logokeng.png", alt="logo")
+            // Menu
+            ul.main-menu
+              li: a(href="/") Trang chủ
+              li: a(href="/automaker") Hãng xe
+              li: a(href="product") Sản phẩm
+              li: a(href="/contact") Liên hệ
+              li: a(href="new") Tin tức
+              li: a(href="/login") Login / Register
+              
+            .contact
+              a(href="tel:0398602700") ✆-0398.602.700
+            li.cart
+              a(href="/mylibrary")
+                i.fas.fa-shopping-cart
+                span.cart-count 0
+            .dropdown
+              button.dropdown-btn(aria-label="Mở menu người dùng") ☰
+              .dropdown-content
+                a(href="/account") Tài khoản
+                a(href="/support") Hỗ trợ
+                a(href="/logout") Đăng xuất
+      // Banner
+      section.banner
+        h1 Contact <br> Us
+
+    // About Section
+    section.about-us
+      h2.section-titlee VỀ CHÚNG TÔI
+      .about-container
+        .logo-container
+          img.logo(src="/static/images/logokeng.png", alt="Keeng's Motor Logo")
+        .text-content
+          p KEENG'S MOTOR là đơn vị phân phối chính hãng các dòng xe motor,<br>
+            | chúng tôi kinh doanh các mặt hàng xe mới, xe đã qua sử dụng chính <br> hãng,
+            | phụ kiện chính hãng.
+    .background-text VỀ CHÚNG TÔI
+
+    // Locations
+    section.locations
+      .container
+        .location
+          h3 Keeng LC
+          iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.3956037689386!2d105.92918937503077!3d21.00505328063833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3134e54d82ea2dbb%3A0xc0d08e3fe11b105f!2zVsSpbmggUGjDumMsIFZp4buHdCBOYW0!5e1!3m2!1svi!2s!4v1732692733232!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade")
+        .location
+          h3 Keeng Hà Nội
+          iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.3956037689386!2d105.92918937503077!3d21.00505328063833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135a94c1f882977%3A0x6d016e6656923f46!2zSOG7jWMgdmnhu4duIE7DtG5nIE5naGnhu4dwIFZp4buHdCBOYW0!5e1!3m2!1svi!2s!4v1732692684887!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade")
+          .placeholder
+
+    // Contact Form
+    section.contact-form
+      .form-container
+        h2.section-title CONTACT FORM
+        form(action="/subscribe", method="POST")
+          input(type="email", name="email", placeholder="Subscribe your email here", required)
+          button(type="submit") Subscribe
+      .background-textt CONTACT FORM
+
+    section.contact-infoo
+      .info-container
+        .info-item
+          i.icon-location
+          h4 ADDRESS
+          p Lào Cai
+        .info-item
+          i.icon-phone
+          h4 PHONE
+          p
+            | Hotline:
+            br
+            | LÀO CAI : 0843 246 666
+            br
+            | HÀ NỘI : 0328 865 555
+        .info-item
+          i.icon-mail
+          h4 E-MAIL
+          p lthieu244@gmail.com
+
+    footer
+      .footer-container
+        .contact-info
+          h3 CONTACT
+          .contact-details
+            address
+              <br>
+              p Lào Cai
+              p Hotline: 0843 249 999
+              <br>
+              p
+                | Email: 
+                a(href="mailto:lthieu244@gmail.com") lthieu244@gmail.com
+            address
+              p Gia Lâm - Hà Nội
+              p Hotline: 0944 686 666
+        .socials
+          h3 Follow Us
+          .social-icons
+            a(href="https://facebook.com" target="_blank")
+              i.fa.fa-facebook-square
+            a(href="https://instagram.com" target="_blank")
+              i.fa.fa-instagram
+            a(href="https://linkedin.com" target="_blank")
+              i.fa.fa-linkedin
+        .footer-logo
+          img(src="/static/images/logokeng.png", alt="Company Logo")

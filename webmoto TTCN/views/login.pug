@@ -1,0 +1,78 @@
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Keeng's Moto
+    link(rel="stylesheet", href="/static/login.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
+  body
+    // Header
+    header.header
+      .header-overlay
+        .header-center
+          nav.header-nav
+            .header-left
+              a(href="index.html")
+                img(src="/static/images/logokeng.png", alt="logo")
+            // Menu
+            ul.main-menu
+              li: a(href="/") Trang chủ
+              li: a(href="/automaker") Hãng xe
+              li: a(href="product") Sản phẩm
+              li: a(href="/contact") Liên hệ
+              li: a(href="new") Tin tức
+              li: a(href="/login") Login / Register
+              
+            .contact
+              a(href="tel:0398602700") ✆-0398.602.700
+            li.cart
+              a(href="/mylibrary")
+                i.fas.fa-shopping-cart
+                span.cart-count 0
+            .dropdown
+              button.dropdown-btn(aria-label="Mở menu người dùng") ☰
+              .dropdown-content
+                a(href="/account") Tài khoản
+                a(href="/support") Hỗ trợ
+                a(href="/logout") Đăng xuất
+
+        form.login(method="post" action=url ? `/login?url=${url}` : "/login") 
+            h2 LOGIN !
+            if message 
+                p.err=message 
+            else
+                p Vui lòng đăng nhập 
+            input(type="text" name = "username" placeholder = "Tên đăng nhập" value=username? username: '')
+            input(type="password" name = "password" placeholder = "Mật khẩu")
+            input(type="submit" value = "Đăng nhập")
+            .links
+                a(href="/reset-password") Quên mật khẩu?
+                a(href="/create-user") Đăng ký
+
+    footer
+      .footer-container
+        .contact-info
+          h3 CONTACT
+          .contact-details
+            address
+              <br>
+              p Lào Cai
+              p Hotline: 0843 249 999
+              <br>
+              p
+                | Email: 
+                a(href="mailto:lthieu244@gmail.com") lthieu244@gmail.com
+            address
+              p Gia Lâm - Hà Nội
+              p Hotline: 0944 686 666
+        .socials
+          h3 Follow Us
+          .social-icons
+            a(href="https://facebook.com" target="_blank")
+              i.fa.fa-facebook-square
+            a(href="https://instagram.com" target="_blank")
+              i.fa.fa-instagram
+            a(href="https://linkedin.com" target="_blank")
+              i.fa.fa-linkedin
+        .footer-logo
+          img(src="/static/images/logokeng.png", alt="Company Logo")

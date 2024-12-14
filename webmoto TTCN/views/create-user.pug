@@ -1,0 +1,27 @@
+html 
+    head 
+        title Sign up 
+        link(rel="stylesheet", href="/static/create-user.css")
+    body 
+        .container
+            .card
+                a.back-link(href="/login") Back
+                .card_title
+                    h1 SIGN UP
+                        if error
+                            .error-message(style="color: red; margin-bottom: 10px;")
+                                |#{error}
+                    span | Already have an account? 
+                        a(href="login") Sign In
+                    .form
+                        form(action="/user" method="post")
+                            input(type="text" name ="username" placeholder = "Tên đăng nhập")
+                            input(type="tel", name="SoDT" placeholder = "Số điện thoại")
+                            input(type="email", name="email" placeholder = "Email")
+                            input(type="date", name="NgaySinh" placeholder = "Ngày sinh")
+                            input(type="password" name ="password" placeholder = "Mật khẩu")
+                            button(type="submit") Sign Up
+                    .card_terms
+                        input(type="checkbox" id="terms")
+                        span | I have read and agree to the 
+                            a(href="") Terms of Service

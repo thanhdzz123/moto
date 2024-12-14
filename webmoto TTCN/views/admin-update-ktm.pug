@@ -1,0 +1,23 @@
+html
+  head
+    title Cập Nhật Xe KTM
+    link(rel="stylesheet", href="/static/update-ktm.css") 
+  body
+    h2 Cập Nhật Xe KTM
+    form(action=`/ktm/${ktm._id}`, method="POST", enctype="multipart/form-data")
+      div
+        label(for="TenXe") Tên Xe
+        input(type="text", name="TenXe", value=ktm.TenXe, required)
+      div
+        label(for="DongXe") Dòng Xe
+        input(type="text", name="DongXe", value=ktm.DongXe, required)
+      div
+        label(for="NamSanXuat") Năm Sản Xuất
+        input(type="number", name="NamSanXuat", value=ktm.NamSanXuat, required)
+      div
+        label(for="GiaBan") Giá Bán
+        input(type="number", name="GiaBan", value=ktm.GiaBan, required)
+      div
+        label(for="SaleTag") Sale Tag
+        input(type="text", name="SaleTag", value=ktm.SaleTag)
+      button(type="submit") Cập Nhật Xe KTM

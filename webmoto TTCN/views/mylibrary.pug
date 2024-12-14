@@ -1,0 +1,144 @@
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Keeng's Moto
+    link(rel="stylesheet", href="/static/mylibrary.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
+  body
+    // Header
+    header
+      .header-center
+        nav.header-nav
+          .header-left
+            a(href="index.html")
+              img(src="/static/images/logokeng.png", alt="logo")
+          // Menu
+          ul.main-menu
+            li: a(href="/") Trang chủ
+            li: a(href="/automaker") Hãng xe
+            li: a(href="products") Sản phẩm
+            li: a(href="/contact") Liên hệ
+            li: a(href="news.html") Tin tức
+            li: a(href="/login") Login / Register
+          .search-form
+            form(action="/search" method="GET")
+              input(type="text" name="query" placeholder="Tìm kiếm sách theo tên..." aria-label="Tìm kiếm sách")
+              button(type="submit") Tìm kiếm          
+          .contact
+            a(href="tel:0398602700") ✆-0398.602.700
+          li.cart
+            a(href="/mylibrary")
+              i.fas.fa-shopping-cart
+              span.cart-count 0
+          .dropdown
+            button.dropdown-btn(aria-label="Mở menu người dùng") ☰
+            .dropdown-content
+              a(href="/account") Tài khoản
+              a(href="/support") Hỗ trợ
+              a(href="/logout") Đăng xuất
+
+    .container
+      h1 GIỎ HÀNG
+      form(action="/mylibrary/reset" method="post")
+        a.back(href="/") Quay lại trang chủ
+        button(type="submit") Xóa All giỏ hàng
+      if message
+        p= message
+      else
+        .cart-items
+          each moto, index in motos
+            .cart-item
+              .item
+                .image
+                  img(src=moto.AnhXe, alt=moto.TenXe, width="100")
+                .details
+                  h2= moto.TenXe
+                  p= moto.HangSanXuat
+                  p= "Năm Sản Xuất: " + moto.NamSanXuat
+                  p= "Giá: " + moto.GiaBan + " VND"
+                  p= moto.MoTa
+                  .quantity
+                    button(type="button" class="decrement" data-index=index) -
+                    span= moto.soLuong || 1
+                    button(type="button" class="increment" data-index=index) +
+                    button(type="button" class="delete" data-index=index) Xóa
+              .price
+                p Tạm tính: <span class="total-price" data-price=#{moto.GiaBan * (moto.soLuong || 1)} >#{moto.GiaBan * (moto.soLuong || 1)} VND</span>
+        .cart-summary
+          p Tổng cộng: <span class="grand-total">0 đ</span>
+          button.checkout(type="button") Mua Ngay
+        p Nếu số lượng xe lớn hơn 5! Khách hàng chủ động liên hệ theo hotline 0843 243 333!
+
+    // Footer
+    footer
+      .footer-container
+        .contact-info
+          h3 Contact
+          p Vĩnh Phúc: 01123457777
+          p Gia Lâm Hà Nội: 123456785249
+          p
+            | Email: 
+            a(href="mailto:thanhhi@gmail.com") thanhhi@gmail.com
+        .socials
+          h3 Fanpage
+          p Follow us on social media
+
+    // Script cho các hành động
+    script.
+      const updatePrice = () => {
+        let grandTotal = 0;
+        document.querySelectorAll('.cart-item').forEach(item => {
+          const quantity = parseInt(item.querySelector('.quantity span').textContent);
+          const pricePerItem = parseInt(item.querySelector('.price .total-price').textContent.replace(' đ', '').replace(/\./g, ''));
+          grandTotal += pricePerItem;
+        });
+        document.querySelector('.grand-total').textContent = grandTotal.toLocaleString() + ' VND';
+      }
+
+      document.querySelectorAll('.increment').forEach(button => {
+        button.addEventListener('click', function() {
+          const index = this.getAttribute('data-index');
+          const quantityElement = document.querySelectorAll('.quantity span')[index];
+          let quantity = parseInt(quantityElement.textContent);
+          quantityElement.textContent = quantity + 1;
+
+          // Update price based on quantity change
+          const pricePerItem = parseInt(document.querySelectorAll('.cart-item')[index].querySelector('.price .total-price').getAttribute('data-price'));
+          document.querySelectorAll('.cart-item')[index].querySelector('.total-price').textContent = (pricePerItem * (quantity + 1)).toLocaleString() + ' đ';
+
+          updatePrice();
+        });
+      });
+
+      document.querySelectorAll('.decrement').forEach(button => {
+        button.addEventListener('click', function() {
+          const index = this.getAttribute('data-index');
+          const quantityElement = document.querySelectorAll('.quantity span')[index];
+          let quantity = parseInt(quantityElement.textContent);
+          if (quantity > 1) {
+            quantityElement.textContent = quantity - 1;
+
+            // Update price based on quantity change
+            const pricePerItem = parseInt(document.querySelectorAll('.cart-item')[index].querySelector('.price .total-price').getAttribute('data-price'));
+            document.querySelectorAll('.cart-item')[index].querySelector('.total-price').textContent = (pricePerItem * (quantity - 1)).toLocaleString() + ' đ';
+
+            updatePrice();
+          }
+        });
+      });
+
+      document.querySelectorAll('.delete').forEach(button => {
+        button.addEventListener('click', function() {
+          const index = this.getAttribute('data-index');
+          document.querySelectorAll('.cart-item')[index].remove();
+          updatePrice();
+        });
+      });
+
+      document.querySelector('.checkout').addEventListener('click', function() {
+        window.location.href = '/checkout'; // Redirect to checkout page
+      });
+
+      // Update total price when the page loads
+      updatePrice();

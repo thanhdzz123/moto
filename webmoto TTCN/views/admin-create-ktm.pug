@@ -1,0 +1,41 @@
+html
+  head
+    title Tạo Xe KTM Mới
+    link(rel="stylesheet", href="/static/create-ktm.css") 
+  body
+    h2 Tạo Xe KTM Mới
+    form(action="/ktm", method="POST", enctype="multipart/form-data")
+      
+      // Tên Xe
+      div.form-group
+        label(for="TenXe") Tên Xe
+        input(type="text", name="TenXe", id="TenXe", required)
+
+      // Dòng Xe
+      div.form-group
+        label(for="DongXe") Dòng Xe
+        input(type="text", name="DongXe", id="DongXe", required)
+      
+      // Năm Sản Xuất
+      div.form-group
+        label(for="NamSanXuat") Năm Sản Xuất
+        input(type="number", name="NamSanXuat", id="NamSanXuat", required)
+
+      // Giá Bán
+      div.form-group
+        label(for="GiaBan") Giá Bán
+        input(type="number", name="GiaBan", id="GiaBan", required)
+
+      // Ảnh Xe
+      div.form-group
+        label(for="AnhXe") Ảnh Xe
+        input(type="file", name="AnhXe", id="AnhXe", accept="image/*")
+      
+      // Sale Tag
+      div.form-group
+        label(for="SaleTag") Sale Tag
+        input(type="text", name="SaleTag", id="SaleTag")
+
+      // Nút submit
+      div.form-group
+        button(type="submit") Tạo Xe KTM Mới

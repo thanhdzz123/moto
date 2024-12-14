@@ -1,0 +1,76 @@
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Keeng's Moto
+    link(rel="stylesheet", href="/static/automaker.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
+  body
+    // Header
+    header
+      .header-center
+        nav.header-nav
+          .header-left
+            a(href="index.html")
+              img(src="/static/images/logokeng.png", alt="logo")
+          // Menu
+          ul.main-menu
+            li: a(href="/") Trang chủ
+            li: a(href="/automaker") Hãng xe
+            li: a(href="products.html") Sản phẩm
+            li: a(href="/contact") Liên hệ
+            li: a(href="news.html") Tin tức
+            li: a(href="/login") Login / Register
+          .search-form
+            form(action="/search" method="GET")
+              input(type="text" name="query" placeholder="Tìm kiếm xe theo tên..." aria-label="Tìm kiếm")
+              button(type="submit") Tìm kiếm
+          .contact
+            a(href="tel:0398602700") ✆-0398.602.700
+          li.cart
+            a(href="/mylibrary")
+              i.fas.fa-shopping-cart
+              span.cart-count 0
+          .dropdown
+            button.dropdown-btn(aria-label="Mở menu người dùng") ☰
+            .dropdown-content
+              a(href="/account") Tài khoản
+              a(href="/support") Hỗ trợ
+              a(href="/logout") Đăng xuất
+
+    // Main Content
+    main
+      // Filter and Search
+      .filter-section
+        .categories
+          a(href="/automaker?brand=All") All
+          a(href="/automaker?brand=Kawasaki") Kawasaki
+          a(href="/automaker?brand=Aprilia") Aprilia
+          a(href="/automaker?brand=KTM") KTM
+
+      .search-section
+        form(action="/search" method="GET")
+          input(type="text" name="query" placeholder="Tìm kiếm xe theo tên..." aria-label="Tìm kiếm xe KTM")
+          button(type="submit") Tìm kiếm
+
+      // Product List
+      if ktms && ktms.length > 0
+        ul.moto-list
+          each ktm in ktms
+            li.moto-item
+              img(src=ktm.AnhXe, alt=ktm.TenXe)
+              h4= ktm.TenXe
+              p Price: #{ktm.GiaBan} VND
+              if ktm.SaleTag
+                .sale-tag= ktm.SaleTag
+
+    // Footer
+    footer
+      .footer-container
+        .contact-info
+          h3 Contact
+          p Vĩnh Phúc: 01123457777
+          p Gia Lâm Hà Nội: 123456785249
+          p Email: a(href="mailto:thanhhi@gmail.com") thanhhi@gmail.com
+        .socials
+          h3 Fanpage

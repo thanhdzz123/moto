@@ -1,0 +1,61 @@
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Keeng's Moto
+    link(rel="stylesheet", href="/static/admin.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
+  body
+    // Header Section
+    header
+      .header-center
+        nav.header-nav
+          .header-left
+            a(href="/")
+              img(src="/static/images/logokeng.png", alt="Keeng's Moto Logo")
+          // Menu Section
+          ul.main-menu
+            li
+              a(href="/") Trang chủ
+            li
+              a(href="/automaker") Hãng xe
+            li
+              a(href="/products") Sản phẩm
+            li
+              a(href="/contact") Liên hệ
+            li
+              a(href="/news.html") Tin tức
+            li
+              a(href="/login") Login / Register   
+          .contact
+            a(href="tel:0398602700") ✆-0398.602.700
+          li.cart
+            a(href="/mylibrary")
+              i.fas.fa-shopping-cart
+          .dropdown
+            button.dropdown-btn(aria-label="Mở menu người dùng") ☰
+            .dropdown-content
+              a(href="/account") Tài khoản
+              a(href="/support") Hỗ trợ
+              a(href="/logout") Đăng xuất
+    
+    // Admin Menu (Hiển thị khi vào trang admin)
+    h2 CHỨC NĂNG ADMIN
+    nav.admin-menu
+      ul
+        li: a(href="/users") Quản Lý Người Dùng
+        li.dropdown
+          a(href="#") Quản Lý 
+          ul.dropdown-content
+            li: a(href="/motos") Moto
+            li: a(href="/") Tin Tức
+            li: a(href="/") Sản Phẩm Tiêu Biểu
+        li.dropdown
+          a(href="#") Quản Lý Sản Phẩm
+          ul.dropdown-content
+            li: a(href="/") Phụ Kiện
+            li: a(href="/") Hãng xe
+        li: a(href="/") ??? 
+    // Main Content
+    main
+      h2 Chào mừng bạn đến với hệ thống quản lý xe

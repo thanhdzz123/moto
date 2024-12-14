@@ -1,0 +1,46 @@
+html
+  head
+    title Quản Lý Xe KTM
+    link(rel="stylesheet", href="/static/ktms.css") 
+  body
+    h2 Quản Lý Xe KTM
+    //- Thêm liên kết quay lại trang admin và trang chủ
+    a.back-link(href="/admin") Quay lại trang admin
+    br
+    a.back-link(href="/") Quay lại trang chủ
+
+    a(href="/admin-create-ktm") Thêm Xe 
+
+    table.content-table
+      thead 
+        tr
+          th Image
+          th Tên Xe
+          th Dòng Xe
+          th Năm Sản Xuất
+          th Giá Bán
+          th Sale Tag
+          th Option 
+      tbody 
+        each ktm in ktms 
+          tr 
+            // Cột ảnh xe
+            td 
+              if ktm.AnhXe
+                img(src=ktm.AnhXe, alt="Ảnh xe", width="150", height="100")
+              else 
+                span Chưa có ảnh
+                
+            // Cột thông tin xe
+            td= ktm.TenXe 
+            td= ktm.DongXe
+            td= ktm.NamSanXuat
+            td= ktm.GiaBan + " VND"
+            td= ktm.SaleTag 
+
+            // Cột hành động
+            td 
+              a(href=`/ktm/${ktm._id}`) Xóa 
+              br
+              br
+              a(href=`/admin-update-ktm/${ktm._id}`) Cập Nhật

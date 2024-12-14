@@ -1,0 +1,50 @@
+html
+  head    
+    title Quản Lý Xe Máy
+    link(rel="stylesheet", href="/static/motos.css") 
+  body 
+    h2 Quản Lý Xe Máy
+    //- Thêm liên kết quay lại trang admin và trang chủ
+    a.back-link(href="/admin") Quay lại trang admin
+    br
+    a.back-link(href="/") Quay lại trang chủ
+
+    a.themxe(href="/create-moto") Thêm Xe 
+
+    table(class="content-table")
+      thead 
+        tr
+          th Image
+          th Tên Xe
+          th Hãng Xe
+          th Dòng Xe
+          th Năm Sản Xuất
+          th Giá Cũ
+          th Giá Bán
+          th Sale Tag
+          th Option 
+      tbody 
+        each moto in motos 
+          tr 
+            // Cột ảnh xe
+            td 
+              if moto.AnhXe
+                img(src=moto.AnhXe, alt="Ảnh xe", width="150", height="100")
+              else 
+                span Chưa có ảnh
+                
+            // Cột thông tin xe
+            td= moto.TenXe 
+            td= moto.HangXe
+            td= moto.DongXe
+            td= moto.NamSanXuat
+            td= moto.GiaCu + " VND"
+            td= moto.GiaBan + " VND"
+            td= moto.SaleTag 
+
+            // Cột hành động
+            td 
+              a(href=`/moto/${moto._id}`) Xóa 
+              br
+              br
+              a(href=`/update-moto/${moto._id}`) Cập Nhật

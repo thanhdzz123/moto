@@ -1,0 +1,45 @@
+html
+  head
+    title Cập Nhật Xe Máy
+    link(rel="stylesheet", href="/static/update-moto.css")
+  body
+    h2 Cập Nhật Thông Tin Xe Máy
+    form(action='/moto/' + moto._id, method="post", enctype="multipart/form-data")
+      //- Tên Xe
+      label(for="TenXe") Tên Xe:
+      input(type="text", name="TenXe", value=moto.TenXe, placeholder="Tên Xe", required)
+
+      //- Hãng Xe
+      label(for="HangXe") Hãng Xe:
+      input(type="text", name="HangXe", value=moto.HangXe, placeholder="Hãng Xe", required)
+
+      //- Dòng Xe
+      label(for="DongXe") Dòng Xe:
+      input(type="text", name="DongXe", value=moto.DongXe, placeholder="Dòng Xe", required)
+
+      //- Năm Sản Xuất
+      label(for="NamSanXuat") Năm Sản Xuất:
+      input(type="number", name="NamSanXuat", value=moto.NamSanXuat, placeholder="Năm Sản Xuất", required)
+    
+      //- Giá Cũ (VND)
+      label(for="GiaCu") Giá Cũ (VND):
+      input(type="number", name="GiaCu", value=moto.GiaCu, placeholder="Giá Cũ (VND)", required)
+    
+      //- Giá Bán (VND)
+      label(for="GiaBan") Giá Bán (VND):
+      input(type="number", name="GiaBan", value=moto.GiaBan, placeholder="Giá Bán (VND)", required)
+
+      //- Hình Ảnh Xe
+      label(for="AnhXe") Hình Ảnh Xe:
+      input(type="file", name="AnhXe", accept="image/*")
+
+      //- Thẻ Giảm Giá (SaleTag)
+      label(for="SaleTag") Sale Tag:
+      input(type="text", name="SaleTag", value=moto.SaleTag, placeholder="Sale Tag", required)
+
+      //- Nút Cập Nhật
+      input(type="submit", value="Cập Nhật")
+
+    //- Liên kết quay lại danh sách xe
+    a(href='/motos') Quay lại danh sách xe
+    a(href='/') Quay lại trang chủ

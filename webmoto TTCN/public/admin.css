@@ -1,0 +1,389 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #e1e1e1;
+}
+
+
+/* Container chính */
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+/* Phần Logo */
+
+.header-left a img {
+    height: 200px;
+    max-height: 100%;
+    width: auto;
+    transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+    margin-right: 150px;
+}
+
+
+/* Hiệu ứng hover cho logo */
+
+.header-left a img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+    opacity: 0.8;
+}
+
+
+/* Logo trên màn hình di động */
+
+@media screen and (max-width: 991px) {
+    .header-left a img {
+        height: 40px;
+    }
+}
+
+
+/* Hiệu ứng hover khác cho logo */
+
+.header-left a img:focus {
+    outline: none;
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+
+/* Header Wrapper */
+
+.header-wrapper {
+    background-color: #515151;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 15px 0;
+    opacity: 0.9;
+}
+
+
+/* Phần bên trái (Logo) */
+
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    flex: 1;
+}
+
+.header-center {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    background-color: #515151;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.header-right {
+    text-align: right;
+}
+
+.contact a {
+    color: #f7f7f7;
+    font-size: 16px;
+    text-decoration: none;
+    margin-left: 100px;
+    font-weight: 100;
+}
+
+
+/* Phần trung tâm (Menu) */
+
+.header-center nav {
+    display: flex;
+    justify-content: center;
+}
+
+.main-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-menu li {
+    margin: 0 15px;
+}
+
+.main-menu li a {
+    text-decoration: none;
+    color: #f5f5f5;
+    font-weight: 600;
+    transition: color 0.3s, transform 0.3s;
+    position: relative;
+}
+
+.main-menu li a:hover {
+    color: #69be28;
+    transform: translateY(-3px);
+}
+
+
+/* Hiệu ứng Hover cho các Menu */
+
+.main-menu li a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #69be28;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.main-menu li a:hover::after {
+    transform: scaleX(1);
+}
+
+
+/* Giỏ hàng */
+
+.cart {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.cart a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.cart .cart-count {
+    background-color: #69be28;
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 8px;
+    font-size: 12px;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+
+.cart:hover {
+    text-decoration: underline;
+    color: #69be28;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-btn {
+    background-color: #555555;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.dropdown-btn:hover {
+    background-color: #69be28;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #7ebc4e;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/* Phần Admin Menu */
+
+nav.admin-menu {
+    background-color: #2c3e50;
+    /* Màu nền tối cho menu admin */
+    width: 300px;
+    /* Rút ngắn chiều rộng của menu */
+    padding: 20px;
+    border-radius: 10px;
+    /* Bo tròn các góc */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Bóng nhẹ và sắc nét hơn */
+    margin-top: 30px;
+    /* Khoảng cách từ phần trên xuống */
+    display: inline-block;
+    /* Đảm bảo menu không kéo dài hết chiều ngang */
+    vertical-align: top;
+    /* Đảm bảo menu đứng dọc với nội dung chính */
+    transition: all 0.3s ease;
+    /* Hiệu ứng chuyển động mượt mà */
+}
+
+
+/* Định dạng cho danh sách các mục menu */
+
+nav.admin-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Khoảng cách giữa các mục menu */
+
+nav.admin-menu li {
+    margin-bottom: 15px;
+}
+
+
+/* Định dạng liên kết trong menu */
+
+nav.admin-menu a {
+    display: block;
+    color: #ecf0f1;
+    /* Màu chữ sáng, dễ đọc trên nền tối */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 12px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    /* Hiệu ứng chuyển đổi mượt mà khi hover */
+}
+
+
+/* Hiệu ứng hover cho các mục menu */
+
+nav.admin-menu a:hover {
+    background-color: #2ebd3a;
+    /* Màu nền xanh khi hover */
+    color: #ffffff;
+    /* Chữ trắng khi hover */
+    transform: translateX(5px);
+    /* Hiệu ứng dịch chuyển nhẹ sang phải */
+}
+
+
+/* Hiệu ứng underline (gạch dưới) khi hover */
+
+nav.admin-menu a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px;
+    background-color: #ffffff;
+    /* Màu gạch dưới là trắng */
+    transition: width 0.3s ease;
+    /* Hiệu ứng mở rộng */
+}
+
+nav.admin-menu a:hover::after {
+    width: 100%;
+    /* Khi hover, gạch dưới sẽ mở rộng */
+}
+
+
+/* Menu con (sử dụng hover để hiển thị menu con) */
+
+nav.admin-menu li.dropdown {
+    position: relative;
+}
+
+nav.admin-menu li.dropdown:hover .dropdown-content {
+    display: block;
+    /* Hiển thị menu con khi hover vào mục menu cha */
+}
+
+nav.admin-menu .dropdown-content {
+    display: none;
+    /* Ẩn menu con ban đầu */
+    position: absolute;
+    left: 100%;
+    /* Đặt menu con bên phải mục cha */
+    top: 0;
+    background-color: #537494;
+    width: 200px;
+    /* Chiều rộng của menu con */
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+}
+
+nav.admin-menu .dropdown-content li {
+    margin-bottom: 0;
+    /* Bỏ margin dưới các mục menu con */
+}
+
+nav.admin-menu .dropdown-content li a {
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #ecf0f1;
+}
+
+nav.admin-menu .dropdown-content li a:hover {
+    background-color: #2ebd3a;
+    /* Màu nền khi hover vào mục menu con */
+}
+
+
+/* Đảm bảo không có khoảng cách dưới phần tử cuối cùng */
+
+nav.admin-menu li:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Main Content */
+
+main {
+    padding: 40px;
+    margin-top: 30px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+main h2 {
+    font-size: 2.5em;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,182 @@
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Keeng's Moto
+    link(rel="stylesheet", href="/static/automaker.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
+  body
+    // Header
+    header.header
+      .header-overlay
+        .header-center
+          nav.header-nav
+            .header-left
+              a(href="index.html")
+                img(src="/static/images/logokeng.png", alt="logo")
+            // Menu
+            ul.main-menu
+              li: a(href="/") Trang chủ
+              li: a(href="/automaker") Hãng xe
+              li: a(href="product") Sản phẩm
+              li: a(href="/contact") Liên hệ
+              li: a(href="new") Tin tức
+              li: a(href="/login") Login / Register
+              
+            .contact
+              a(href="tel:0398602700") ✆-0398.602.700
+            li.cart
+              a(href="/mylibrary")
+                i.fas.fa-shopping-cart
+                span.cart-count 0
+            .dropdown
+              button.dropdown-btn(aria-label="Mở menu người dùng") ☰
+              .dropdown-content
+                a(href="/account") Tài khoản
+                a(href="/support") Hỗ trợ
+                a(href="/logout") Đăng xuất
+
+    // Main Content
+  main      
+    .filter-section
+      .categories
+        h3 Brand search
+        a(
+          href=`/automaker?brand=All&type=${selectedType}`
+          class=`brand-link ${selectedBrand === 'All' ? 'active' : ''}`
+        ) Tất cả
+        a(
+          href=`/automaker?brand=KAWASAKI&type=${selectedType}`
+          class=`brand-link ${selectedBrand === 'KAWASAKI' ? 'active' : ''}`
+        ) Kawasaki
+        a(
+          href=`/automaker?brand=APRILIA&type=${selectedType}`
+          class=`brand-link ${selectedBrand === 'APRILIA' ? 'active' : ''}`
+        ) Aprilia
+        a(
+          href=`/automaker?brand=KTM&type=${selectedType}`
+          class=`brand-link ${selectedBrand === 'KTM' ? 'active' : ''}`
+        ) KTM
+        a(
+          href=`/automaker?brand=HONDA&type=${selectedType}`
+          class=`brand-link ${selectedBrand === 'HONDA' ? 'active' : ''}`
+        ) Honda
+
+
+    script.
+      // Lấy tất cả các nút liên quan đến hãng xe
+      const brandLinks = document.querySelectorAll('.brand-link');
+      // Gán sự kiện "click" cho từng nút
+      brandLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault(); // Ngăn việc reload trang ngay lập tức
+
+          // Xóa class "active" khỏi tất cả các nút
+          brandLinks.forEach(l => l.classList.remove('active'));
+
+          // Thêm class "active" vào nút được click
+          e.target.classList.add('active');
+
+          // Chuyển hướng người dùng đến URL của nút
+          window.location.href = e.target.href;
+          });
+        });
+
+
+
+  .formm
+    .search-by-type
+      h3 Model search
+      form(action="/automaker" method="GET")
+        input(type="hidden" name="brand" value=selectedBrand)  
+        select(name="type" id="type-filter")
+          option(value="All" selected=selectedType === 'All') Tất cả
+          option(value="NAKED BIKE" selected=selectedType === 'NAKED BIKE') Naked Bike
+          option(value="SPORTS" selected=selectedType === 'SPORTS') Sports
+          option(value="TRAVEL" selected=selectedType === 'TRAVEL') Travel
+        button(type="submit") Lọc
+
+    .formmm    
+      .search-section
+            form(action="/search" method="GET" id="search-form")
+              input(type="text" name="query" placeholder="Tìm kiếm xe theo tên..." aria-label="Tìm kiếm xe")
+              button(type="submit") Tìm kiếm
+      body
+        #messages
+        if messages && messages.success
+          div.alert.alert-success= messages.success
+        if messages && messages.error
+          div.alert.alert-danger= messages.error
+        if messages && messages.info
+          div.alert.alert-info= messages.info
+      main
+        if motos && motos.length > 0
+          ul.moto-list
+            each moto in motos
+              li.moto-item
+                //- Hình ảnh sản phẩm
+                div.star-rating
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                div.card
+                  img.card-image(src=moto.AnhXe, alt=moto.TenXe)
+                  
+                  //- Sale Tag (nếu có)
+                  if moto.SaleTag
+                    span.sale-tag= moto.SaleTag
+
+                  //- Thông tin chi tiết
+                  div.card-details
+                    h6.card-price Price: #{moto.GiaCu} VND
+                    h4.card-price Price: #{moto.GiaBan} VND
+                    p.card-title= moto.TenXe
+                  form(action=`/mylibrary/add/${moto._id}`, method="POST")
+                    button(type="submit") Lưu sản phẩm
+        else
+          p Không tìm thấy sản phẩm nào.
+      //- Chuyển trang (Pagination)
+      if totalPages > 1
+        .pagination
+          // Nút "Trước"
+          if currentPage > 1
+            a(href=`/automaker?page=${currentPage - 1}&brand=${selectedBrand}&type=${selectedType}`) Trước
+          // Hiển thị số trang
+          each pageNumber in Array.from({ length: totalPages }, (_, i) => i + 1)
+            a(href=`/automaker?page=${pageNumber}&brand=${selectedBrand}&type=${selectedType}` class=(currentPage === pageNumber ? 'active' : ''))= pageNumber
+          // Nút "Tiếp theo"
+          if currentPage < totalPages
+            a(href=`/automaker?page=${currentPage + 1}&brand=${selectedBrand}&type=${selectedType}`) Tiếp theo
+
+
+  // Footer
+  footer
+    .footer-container
+      .contact-info
+        h3 CONTACT
+        .contact-details
+          address
+            <br>
+            p Lào Cai
+            p Hotline: 0843 249 999
+            <br>
+            p
+              | Email: 
+              a(href="mailto:lthieu244@gmail.com") lthieu244@gmail.com
+          address
+            p Gia Lâm - Hà Nội
+            p Hotline: 0944 686 666
+      .socials
+        h3 Follow Us
+        .social-icons
+          a(href="https://facebook.com" target="_blank")
+            i.fa.fa-facebook-square
+          a(href="https://instagram.com" target="_blank")
+            i.fa.fa-instagram
+          a(href="https://linkedin.com" target="_blank")
+            i.fa.fa-linkedin
+      .footer-logo
+        img(src="/static/images/logokeng.png", alt="Company Logo")
+

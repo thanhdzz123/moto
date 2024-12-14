@@ -1,0 +1,207 @@
+/* Import font từ Google */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* Biến CSS */
+
+:root {
+    --primary-color: #4A90E2;
+    --secondary-color: #F9FAFC;
+    --text-color: #f3f3f3;
+    --error-color: #E74C3C;
+    --button-bg: #1F2937;
+    --button-hover-bg: #111827;
+    --link-color: #2563EB;
+    --card-bg: #FFFFFF;
+    --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    --border-color: #E5E7EB;
+    --input-bg: #F3F4F6;
+    --font-family: 'Poppins', sans-serif;
+}
+
+
+/* Reset cơ bản */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+
+/* Toàn bộ trang */
+
+body {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+
+/* Container chính */
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    background: url('/static/images/22ZX1002L_40RGN1ATAA2CG_A-3.png') no-repeat center center/cover;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    padding: 25px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Back link */
+
+a.back-link {
+    align-self: flex-start;
+    margin-bottom: 15px;
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+a.back-link:hover {
+    color: darken(var(--link-color), 10%);
+}
+
+
+/* Card Title */
+
+.card_title h1 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.card_title span {
+    font-size: 14px;
+    color: #bababa;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.card_title a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 5px;
+    transition: color 0.3s ease;
+}
+
+.card_title a:hover {
+    color: darken(var(--link-color), 10%);
+}
+
+
+/* Form */
+
+.form form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form input {
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--input-bg);
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form input::placeholder {
+    color: #9CA3AF;
+}
+
+.form input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0px 4px 8px rgba(74, 144, 226, 0.2);
+    outline: none;
+}
+
+.form button {
+    background-color: var(--button-bg);
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form button:hover {
+    background-color: var(--button-hover-bg);
+    transform: scale(1.03);
+}
+
+.form button:active {
+    transform: scale(0.97);
+}
+
+
+/* Điều khoản */
+
+.card_terms {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: #6B7280;
+    margin-top: 10px;
+    text-align: left;
+    width: 100%;
+}
+
+.card_terms input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.card_terms a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.card_terms a:hover {
+    color: darken(var(--link-color), 10%);
+}
+
+
+/* Thông báo lỗi */
+
+.error-message {
+    color: var(--error-color);
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    .form button {
+        font-size: 14px;
+    }
+}

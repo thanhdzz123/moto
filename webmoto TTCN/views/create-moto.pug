@@ -1,0 +1,34 @@
+html
+  head
+    title Tạo Mới Xe Máy
+    link(rel="stylesheet", href="/static/create-moto.css")
+
+  body
+    h2 Tạo Mới Xe Máy
+    form(action="/moto", method="post", enctype="multipart/form-data")
+        //- Tên Xe
+        input(type="text", name="TenXe", placeholder="Tên Xe", required)
+
+        //- Hãng Xe
+        input(type="text", name="HangXe", placeholder="Hãng Xe", required)
+
+        //- Dòng Xe
+        input(type="text", name="DongXe", placeholder="Dòng Xe", required)
+
+        //- Năm Sản Xuất
+        input(type="number", name="NamSanXuat", placeholder="Năm Sản Xuất", required)
+
+        //- Giá Cũ (VND)
+        input(type="number", name="GiaCu", placeholder="Giá Cũ (VND)", required)
+
+        //- Giá Bán (VND)
+        input(type="number", name="GiaBan", placeholder="Giá Bán (VND)", required)
+        //- Ảnh Xe
+
+        input(type="file", name="AnhXe", accept="image/*")
+
+        //- Thẻ Giảm Giá
+        input(type="text", name="SaleTag", placeholder="Sale Tag")
+
+        //- Nút gửi
+        input(type="submit", value="Hoàn thành & Lưu")

@@ -1,0 +1,64 @@
+/* Định dạng chung cho toàn bộ trang */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 30px; /* Khoảng cách xung quanh trang */
+    display: flex;
+    flex-direction: column; /* Đặt chiều dọc cho các phần tử con */
+    align-items: center; /* Căn giữa theo chiều ngang */
+    height: 100vh; /* Chiều cao của viewport */
+    justify-content: center; /* Căn giữa theo chiều dọc */
+}
+
+/* Căn tiêu đề */
+h2 {
+    color: #333;
+    margin-bottom: 20px; /* Khoảng cách giữa tiêu đề và form */
+    text-align: center; /* Căn giữa cho tiêu đề */
+    font-size: 2em; /* Tăng kích thước chữ cho tiêu đề */
+    margin-top: 0; /* Đặt khoảng cách trên bằng 0 */
+}
+
+/* Căn form về giữa */
+form {
+    background-color: #fff;
+    padding: 30px;
+    max-width: 600px; /* Tăng độ rộng tối đa của form */
+    margin: 0; /* Đặt form thẳng giữa */
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Định dạng cho các trường input và select */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="date"],
+select {
+    width: calc(100% - 24px); /* Thay đổi để phù hợp với padding lớn hơn */
+    padding: 15px; /* Tăng padding để các ô input lớn hơn */
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1.1em; /* Tăng kích thước chữ trong các ô input */
+    background-color: #fff; /* Đặt màu nền cho các ô input và select */
+}
+
+/* Định dạng nút Submit */
+input[type="submit"] {
+    width: 100%;
+    background-color: #282928;
+    color: white;
+    border: none;
+    padding: 15px; /* Tăng padding cho nút */
+    font-size: 1.2em; /* Tăng kích thước chữ cho nút */
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+/* Hiệu ứng hover cho nút Submit */
+input[type="submit"]:hover {
+    background-color: #6a6f6b;
+}

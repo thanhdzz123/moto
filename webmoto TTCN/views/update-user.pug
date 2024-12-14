@@ -1,0 +1,19 @@
+html
+    head
+        title Update user
+        link(rel="stylesheet", href="/static/update-user.css")
+    body
+        h2 Update User Form 
+        if error
+            .error-message(style="color: red; margin-bottom: 10px;")
+                |#{error}
+        form(action=`/user/${user._id}`, method="post")
+            input(type="text" name="username" value=user.username placeholder="User name")
+            input(type="tel" name="SoDT" value=user.SoDT placeholder="Số điện thoại")
+            input(type="email" name="email" value=user.email placeholder="Email")
+            input(type="date" name="NgaySinh" value=user.NgaySinh placeholder="Ngày Sinh")
+            select(name="role" required)
+                option(value="", disabled selected) Chọn vai trò
+                option(value="user") Người dùng
+                option(value="admin") Admin
+            input(type="submit" value="Update")
