@@ -1,25 +1,26 @@
 {
-    "name": "databikedb",
-    "version": "1.0.0",
-    "main": "server.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "description": "",
-    "dependencies": {
-        "@fastify/cookie": "^11.0.1",
-        "@fastify/flash": "^6.0.2",
-        "@fastify/formbody": "^8.0.1",
-        "@fastify/jwt": "^9.0.1",
-        "@fastify/mongodb": "^9.0.1",
-        "@fastify/multipart": "^9.0.1",
-        "@fastify/static": "^8.0.2",
-        "@fastify/view": "^10.0.1",
-        "fastify": "^5.0.0",
-        "nodemailer": "^6.9.16",
-        "pug": "^3.0.3"
-    }
+  "name": "databikedb",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@fastify/cookie": "^11.0.1",
+    "@fastify/flash": "^6.0.2",
+    "@fastify/formbody": "^8.0.1",
+    "@fastify/jwt": "^9.0.1",
+    "@fastify/mongodb": "^9.0.1",
+    "@fastify/multipart": "^9.0.1",
+    "@fastify/static": "^8.0.2",
+    "@fastify/view": "^10.0.1",
+    "fastify": "^5.0.0",
+    "nodemailer": "^6.9.16",
+    "pug": "^3.0.3"
+  }
 }
